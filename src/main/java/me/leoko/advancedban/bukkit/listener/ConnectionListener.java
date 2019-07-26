@@ -1,7 +1,7 @@
 package me.leoko.advancedban.bukkit.listener;
 
-import me.leoko.advancedban.bukkit.BukkitMain;
 import me.leoko.advancedban.Universal;
+import me.leoko.advancedban.bukkit.BukkitMain;
 import me.leoko.advancedban.manager.PunishmentManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -24,7 +24,7 @@ public class ConnectionListener implements Listener {
     }
 
     @EventHandler
-    public void onDisconnect(PlayerQuitEvent event){
+    public void onDisconnect(PlayerQuitEvent event) {
         PunishmentManager.get().discard(event.getPlayer().getName());
     }
 
@@ -44,6 +44,4 @@ public class ConnectionListener implements Listener {
             }
         }, 20);
     }
-
-
 }

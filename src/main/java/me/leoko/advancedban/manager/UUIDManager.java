@@ -23,23 +23,23 @@ public class UUIDManager {
         return instance == null ? instance = new UUIDManager() : instance;
     }
 
-    public void setup(){
-        if(mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Dynamic", true)){
-            if(!mi.isOnlineMode()) {
+    public void setup() {
+        if (mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Dynamic", true)) {
+            if (!mi.isOnlineMode()) {
                 mode = FetcherMode.DISABLED;
-            }else{
-                if(Universal.get().isBungee()){
+            } else {
+                if (Universal.get().isBungee()) {
                     mode = FetcherMode.MIXED;
-                }else{
+                } else {
                     mode = FetcherMode.INTERN;
                 }
             }
-        }else{
-            if(!mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Enabled", true)) {
+        } else {
+            if (!mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Enabled", true)) {
                 mode = FetcherMode.DISABLED;
-            }else if(mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Intern", false)){
+            } else if (mi.getBoolean(mi.getConfig(), "UUID-Fetcher.Intern", false)) {
                 mode = FetcherMode.INTERN;
-            }else{
+            } else {
                 mode = FetcherMode.RESTFUL;
             }
         }
@@ -47,12 +47,12 @@ public class UUIDManager {
 
     public String getInitialUUID(String name) {
         name = name.toLowerCase();
-        if(mode == FetcherMode.DISABLED)
+        if (mode == FetcherMode.DISABLED)
             return name;
 
-        if(mode == FetcherMode.INTERN || mode == FetcherMode.MIXED) {
+        if (mode == FetcherMode.INTERN || mode == FetcherMode.MIXED) {
             String internUUID = mi.getInternUUID(name);
-            if(mode == FetcherMode.INTERN || internUUID != null)
+            if (mode == FetcherMode.INTERN || internUUID != null)
                 return internUUID;
         }
 
@@ -95,9 +95,9 @@ public class UUIDManager {
         if (mode == FetcherMode.DISABLED)
             return uuid;
 
-        if(mode == FetcherMode.INTERN || mode == FetcherMode.MIXED) {
+        if (mode == FetcherMode.INTERN || mode == FetcherMode.MIXED) {
             String internName = mi.getName(uuid);
-            if(mode == FetcherMode.INTERN || internName != null)
+            if (mode == FetcherMode.INTERN || internName != null)
                 return internName;
         }
 
@@ -141,7 +141,7 @@ public class UUIDManager {
         return mode;
     }
 
-    public enum FetcherMode{
+    public enum FetcherMode {
         DISABLED, INTERN, MIXED, RESTFUL;
     }
 }

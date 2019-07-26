@@ -1,19 +1,19 @@
 package me.leoko.advancedban.bukkit.listener;
 
-import java.util.Date;
-import me.leoko.advancedban.bukkit.event.*;
+import me.leoko.advancedban.bukkit.event.PunishmentEvent;
+import me.leoko.advancedban.bukkit.event.RevokePunishmentEvent;
 import me.leoko.advancedban.utils.PunishmentType;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.util.Date;
+
 /**
- *
  * @author Beelzebu
  */
 public class InternalListener implements Listener {
-    
     @EventHandler
     public void onPunish(PunishmentEvent e) {
         BanList banlist;
@@ -25,7 +25,7 @@ public class InternalListener implements Listener {
             banlist.addBan(e.getPunishment().getName(), e.getPunishment().getReason(), new Date(e.getPunishment().getEnd()), e.getPunishment().getOperator());
         }
     }
-    
+
     @EventHandler
     public void onRevokePunishment(RevokePunishmentEvent e) {
         BanList banlist;

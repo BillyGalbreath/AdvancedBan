@@ -1,5 +1,9 @@
 package me.leoko.advancedban.manager;
 
+import me.leoko.advancedban.MethodInterface;
+import me.leoko.advancedban.Universal;
+import me.leoko.advancedban.utils.SQLQuery;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,12 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import me.leoko.advancedban.MethodInterface;
-import me.leoko.advancedban.Universal;
-import me.leoko.advancedban.utils.SQLQuery;
 
 public class DatabaseManager {
-
     private String ip;
     private String dbName;
     private String usrName;
@@ -74,12 +74,12 @@ public class DatabaseManager {
             } catch (SQLException ex) {
                 Universal.get().log(
                         " \n"
-                        + " HSQLDB-Error\n"
-                        + " Could not connect to HSQLDB-Server!\n"
-                        + " Disabling plugin!\n"
-                        + " Skype: Leoko33\n"
-                        + " Issue tracker: https://github.com/DevLeoko/AdvancedBan/issues\n"
-                        + " \n"
+                                + " HSQLDB-Error\n"
+                                + " Could not connect to HSQLDB-Server!\n"
+                                + " Disabling plugin!\n"
+                                + " Skype: Leoko33\n"
+                                + " Issue tracker: https://github.com/DevLeoko/AdvancedBan/issues\n"
+                                + " \n"
                 );
             }
         }
@@ -106,13 +106,13 @@ public class DatabaseManager {
         } catch (SQLException exc) {
             Universal.get().log(
                     " \n"
-                    + " MySQL-Error\n"
-                    + " Could not connect to MySQL-Server!\n"
-                    + " Disabling plugin!\n"
-                    + " Check your MySQL.yml\n"
-                    + " Skype: Leoko33\n"
-                    + " Issue tracker: https://github.com/DevLeoko/AdvancedBan/issues \n"
-                    + " \n"
+                            + " MySQL-Error\n"
+                            + " Could not connect to MySQL-Server!\n"
+                            + " Disabling plugin!\n"
+                            + " Check your MySQL.yml\n"
+                            + " Skype: Leoko33\n"
+                            + " Issue tracker: https://github.com/DevLeoko/AdvancedBan/issues \n"
+                            + " \n"
             );
             failedMySQL = true;
         }
@@ -158,8 +158,8 @@ public class DatabaseManager {
         } catch (SQLException ex) {
             Universal.get().log(
                     "An unexpected error has ocurred executing an Statement in the database\n"
-                    + "Please check the plugins/AdvancedBan/logs/latest.log file and report this"
-                    + "error in: https://github.com/DevLeoko/AdvancedBan/issues"
+                            + "Please check the plugins/AdvancedBan/logs/latest.log file and report this"
+                            + "error in: https://github.com/DevLeoko/AdvancedBan/issues"
             );
             Universal.get().debug("Query: \n" + sql);
             Universal.get().debug(ex);

@@ -1,5 +1,12 @@
 package me.leoko.advancedban.manager;
 
+import me.leoko.advancedban.MethodInterface;
+import me.leoko.advancedban.Universal;
+import me.leoko.advancedban.utils.InterimData;
+import me.leoko.advancedban.utils.Punishment;
+import me.leoko.advancedban.utils.PunishmentType;
+import me.leoko.advancedban.utils.SQLQuery;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,18 +15,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import me.leoko.advancedban.MethodInterface;
-import me.leoko.advancedban.Universal;
-import me.leoko.advancedban.utils.InterimData;
-import me.leoko.advancedban.utils.Punishment;
-import me.leoko.advancedban.utils.PunishmentType;
-import me.leoko.advancedban.utils.SQLQuery;
 
 /**
  * Created by Leoko @ dev.skamps.eu on 30.05.2016.
  */
 public class PunishmentManager {
-
     private static PunishmentManager instance = null;
     private final Universal universal = Universal.get();
     private final Set<Punishment> punishments = Collections.synchronizedSet(new HashSet<>());
@@ -40,8 +40,8 @@ public class PunishmentManager {
     }
 
     public InterimData load(String name, String uuid, String ip) {
-	Set<Punishment> punishments = new HashSet<>();
-	Set<Punishment> history = new HashSet<>();
+        Set<Punishment> punishments = new HashSet<>();
+        Set<Punishment> history = new HashSet<>();
         try {
             ResultSet rs = DatabaseManager.get().executeResultStatement(SQLQuery.SELECT_USER_PUNISHMENTS_WITH_IP, uuid, ip);
             while (rs.next()) {
@@ -90,7 +90,7 @@ public class PunishmentManager {
         List<Punishment> ptList = new ArrayList<>();
 
         if (isCached(uuid)) {
-            for (Iterator<Punishment> iterator = (current ? punishments : history).iterator(); iterator.hasNext();) {
+            for (Iterator<Punishment> iterator = (current ? punishments : history).iterator(); iterator.hasNext(); ) {
                 Punishment pt = iterator.next();
                 if ((put == null || put == pt.getType().getBasic()) && pt.getUuid().equals(uuid)) {
                     if (!current || !pt.isExpired()) {
@@ -226,19 +226,22 @@ public class PunishmentManager {
         return punishments;
     }
 
-//    public long getCalculation(String layout, String name, String uuid) {
-//        long end = TimeManager.getTime();
-//        MethodInterface mi = Universal.get().getMethods();
-//
-//        int i = getCalculationLevel(name, uuid);
-//
-//        List<String> timeLayout = mi.getStringList(mi.getLayouts(), "Time." + layout);
-//        String time = timeLayout.get(timeLayout.size() <= i ? timeLayout.size() - 1 : i);
-//        long toAdd = TimeManager.toMilliSec(time.toLowerCase());
-//        end += toAdd;
-//
-//        return end;
-//    }
+    /*
+    public long getCalculation(String layout, String name, String uuid) {
+        long end = TimeManager.getTime();
+        MethodInterface mi = Universal.get().getMethods();
+
+        int i = getCalculationLevel(name, uuid);
+
+        List<String> timeLayout = mi.getStringList(mi.getLayouts(), "Time." + layout);
+        String time = timeLayout.get(timeLayout.size() <= i ? timeLayout.size() - 1 : i);
+        long toAdd = TimeManager.toMilliSec(time.toLowerCase());
+        end += toAdd;
+
+        return end;
+    }
+    */
+
     public Punishment getPunishmentFromResultSet(ResultSet rs) throws SQLException {
         return new Punishment(
                 rs.getString("name"),

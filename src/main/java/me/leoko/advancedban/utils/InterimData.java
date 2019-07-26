@@ -1,13 +1,13 @@
 package me.leoko.advancedban.utils;
 
-import java.util.Set;
 import me.leoko.advancedban.manager.PunishmentManager;
+
+import java.util.Set;
 
 /**
  * Created by Leo on 04.08.2017.
  */
 public class InterimData {
-
     private final String uuid, name, ip;
     private final Set<Punishment> punishments, history;
 

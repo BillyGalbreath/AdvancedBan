@@ -20,7 +20,7 @@ public class TestMethods implements MethodInterface {
     public TemporaryFolder folder = new TemporaryFolder();
     private File dataFolder;
 
-    public TestMethods(){
+    public TestMethods() {
         try {
             folder.create();
         } catch (IOException e) {
@@ -90,7 +90,7 @@ public class TestMethods implements MethodInterface {
 
     @Override
     public void sendMessage(Object player, String msg) {
-        System.out.println("Message: "+player+" -> "+msg);
+        System.out.println("Message: " + player + " -> " + msg);
     }
 
     @Override
@@ -241,7 +241,7 @@ public class TestMethods implements MethodInterface {
 
     @Override
     public boolean getBoolean(Object file, String path, boolean def) {
-        if(path.equals("DetailedEnableMessage")
+        if (path.equals("DetailedEnableMessage")
                 || path.equals("UUID-Fetcher.Enabled")
                 || path.equals("DetailedDisableMessage")) return false;
         return def;

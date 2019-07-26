@@ -1,19 +1,19 @@
 package me.leoko.advancedban.manager;
 
+import me.leoko.advancedban.MethodInterface;
+import me.leoko.advancedban.Universal;
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
-import me.leoko.advancedban.MethodInterface;
-import me.leoko.advancedban.Universal;
-import org.apache.commons.io.FileUtils;
 
 /**
  * Created by Leo on 07.08.2017.
  */
 public class UpdateManager {
-
     private static UpdateManager instance = null;
 
     public static UpdateManager get() {
@@ -23,7 +23,7 @@ public class UpdateManager {
     public void setup() {
         MethodInterface mi = Universal.get().getMethods();
 
-        if(mi.isUnitTesting()) return;
+        if (mi.isUnitTesting()) return;
 
         if (!mi.contains(mi.getMessages(), "Check.MuteReason")) {
             try {

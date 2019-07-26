@@ -13,7 +13,6 @@ import net.md_5.bungee.event.EventHandler;
  * Created by Leoko @ dev.skamps.eu on 24.07.2016.
  */
 public class ChatListenerBungee implements Listener {
-
     @EventHandler
     public void onChat(ChatEvent event) {
         if (!(event.getSender() instanceof ProxiedPlayer)) {

@@ -1,10 +1,5 @@
 package me.leoko.advancedban.utils;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import me.leoko.advancedban.MethodInterface;
 import me.leoko.advancedban.Universal;
 import me.leoko.advancedban.manager.DatabaseManager;
@@ -12,11 +7,16 @@ import me.leoko.advancedban.manager.MessageManager;
 import me.leoko.advancedban.manager.PunishmentManager;
 import me.leoko.advancedban.manager.TimeManager;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by Leoko @ dev.skamps.eu on 30.05.2016.
  */
 public class Punishment {
-
     private static final MethodInterface mi = Universal.get().getMethods();
     private final String name, uuid, operator, calculation;
     private final long start, end;

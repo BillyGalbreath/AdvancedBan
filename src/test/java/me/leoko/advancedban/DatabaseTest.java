@@ -14,23 +14,23 @@ import static org.junit.Assert.assertTrue;
 
 public class DatabaseTest {
     @BeforeAll
-    public static void setupUniversal(){
+    public static void setupUniversal() {
         Universal.get().setup(new TestMethods());
     }
 
     @Test
-    public void shouldAutomaticallyDetectDatabaseType(){
-        assertFalse("By default no connection with MySQL should be established as it's disabled", DatabaseManager.get().isUseMySQL() );
+    public void shouldAutomaticallyDetectDatabaseType() {
+        assertFalse("By default no connection with MySQL should be established as it's disabled", DatabaseManager.get().isUseMySQL());
         assertFalse("MySQL should not be failed as it should not even try establishing any connection", DatabaseManager.get().isFailedMySQL());
         assertTrue("The HSQLDB-Connection should be valid", DatabaseManager.get().isConnectionValid(3));
         DatabaseManager.get().shutdown();
         DatabaseManager.get().setup(true);
-        assertFalse("Because of a failed connection MySQL should be disabled", DatabaseManager.get().isUseMySQL() );
+        assertFalse("Because of a failed connection MySQL should be disabled", DatabaseManager.get().isUseMySQL());
         assertTrue("MySQL should be failed as the connection can not succeed", DatabaseManager.get().isFailedMySQL());
     }
 
     @AfterAll
-    public static void shutdownUniversal(){
+    public static void shutdownUniversal() {
         Universal.get().shutdown();
     }
 }

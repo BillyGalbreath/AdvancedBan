@@ -1,15 +1,15 @@
 package me.leoko.advancedban.manager;
 
-import java.util.ArrayList;
-import java.util.List;
 import me.leoko.advancedban.MethodInterface;
 import me.leoko.advancedban.Universal;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Leoko @ dev.skamps.eu on 13.07.2016.
  */
 public class MessageManager {
-
     private static final MethodInterface mi = Universal.get().getMethods();
 
     public static String getMessage(String path, String... parameters) {

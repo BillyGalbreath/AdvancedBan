@@ -16,12 +16,12 @@ import org.junit.jupiter.api.Test;
  */
 public class PunishmentTest {
     @BeforeAll
-    public static void setupUniversal(){
+    public static void setupUniversal() {
         Universal.get().setup(new TestMethods());
     }
 
     @Test
-    public void shouldCreatePunishmentForGivenUserWithGivenReason(){
+    public void shouldCreatePunishmentForGivenUserWithGivenReason() {
         Assert.assertFalse("User should not be banned by default", PunishmentManager.get().isBanned("leoko"));
         CommandManager.get().onCommand("UnitTest", "ban", new String[]{"Leoko", "Doing", "some", "unit-testing"});
         Assert.assertTrue("Punishment from above has failed", PunishmentManager.get().isBanned("leoko"));
@@ -29,7 +29,7 @@ public class PunishmentTest {
     }
 
     @Test
-    public void shouldKeepPunishmentAfterRestart(){
+    public void shouldKeepPunishmentAfterRestart() {
         Punishment punishment = new Punishment("leoko", "leoko", "Persistance test", "JUnit5", PunishmentType.MUTE, TimeManager.getTime(), -1, null, -1);
         punishment.create();
         int id = punishment.getId();
@@ -41,7 +41,7 @@ public class PunishmentTest {
     }
 
     @Test
-    public void shouldWorkWithCachedAndNotCachedPunishments(){
+    public void shouldWorkWithCachedAndNotCachedPunishments() {
         Punishment punishment = new Punishment("cache", "cache", "Cache test", "JUnit5", PunishmentType.BAN, TimeManager.getTime(), -1, null, -1);
         punishment.create();
         Assert.assertFalse("Punishment should not be cached if user is not online", PunishmentManager.get().getLoadedPunishments(false).contains(punishment));
@@ -52,7 +52,7 @@ public class PunishmentTest {
     }
 
     @AfterAll
-    public static void shutdownUniversal(){
+    public static void shutdownUniversal() {
         Universal.get().shutdown();
     }
 }

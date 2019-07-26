@@ -9,11 +9,9 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 /**
- *
  * @author Beelzebu
  */
 public class PubSubMessageListener implements Listener {
-    
     private static final MethodInterface mi = Universal.get().getMethods();
 
     @EventHandler

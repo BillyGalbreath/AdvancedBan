@@ -16,10 +16,9 @@ import net.md_5.bungee.event.EventPriority;
  * Created by Leoko @ dev.skamps.eu on 24.07.2016.
  */
 public class ConnectionListenerBungee implements Listener {
-
     @EventHandler(priority = EventPriority.LOW)
     public void onConnection(LoginEvent event) {
-        event.registerIntent((BungeeMain)Universal.get().getMethods().getPlugin());
+        event.registerIntent((BungeeMain) Universal.get().getMethods().getPlugin());
         Universal.get().getMethods().runAsync(() -> {
             String result = Universal.get().callConnection(event.getConnection().getName(), event.getConnection().getAddress().getAddress().getHostAddress());
             if (result != null) {
@@ -29,7 +28,7 @@ public class ConnectionListenerBungee implements Listener {
             if (Universal.get().useRedis()) {
                 RedisBungee.getApi().sendChannelMessage("AdvancedBanConnection", event.getConnection().getName() + "," + event.getConnection().getAddress().getAddress().getHostAddress());
             }
-            event.completeIntent((BungeeMain)Universal.get().getMethods().getPlugin());
+            event.completeIntent((BungeeMain) Universal.get().getMethods().getPlugin());
         });
     }
 

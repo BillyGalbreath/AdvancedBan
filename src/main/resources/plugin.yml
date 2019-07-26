@@ -1,7 +1,8 @@
-name: ${project.artifactId}
-version: ${project.version}
-main: ${project.groupId}.bukkit.BukkitMain
-author: Leoko
+name: "${project.artifactId}"
+version: "${project.version}"
+main: "${project.groupId}.bukkit.BukkitMain"
+author: "Leoko"
+plugin-api: "1.13"
 
 commands:
   AdvancedBan:
